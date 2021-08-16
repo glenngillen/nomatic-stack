@@ -1,5 +1,7 @@
 # Terraform AWS Hashistack
 
+<a href="https://lab.gln.io/deploy?repo=glenngillen/nomatic-stack"><img src="https://lab.gln.io/terraform.deploy.svg?1" height="45" width="129"/></a>
+
 This is a terraform module for setting up a Hashistack on AWS.
 
 The HashiStack consists of Consul, Vault, and Nomad on infrastructure
