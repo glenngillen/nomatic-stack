@@ -7,5 +7,6 @@ blueprint "nomatic-stack" {
   inputs = [
     {name = "AWS_ACCESS_KEY_ID", label = "AWS Access Key"},
     {name = "AWS_SECRET_ACCESS_KEY", label = "AWS Secret Key", sensitive=true}    
+    {name = "TF_KEY_NAME", label = "AWS Keypair Name"}
   ]
 }
