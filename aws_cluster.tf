@@ -228,6 +228,7 @@ resource "aws_autoscaling_group" "clients" {
 
   target_group_arns = [
     aws_alb_target_group.nomad_clients.arn,
+    aws_alb_target_group.nomad_clients_lb.arn,
     aws_alb_target_group.consul_clients.arn
   ]
 
