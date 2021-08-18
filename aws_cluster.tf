@@ -495,9 +495,7 @@ resource "aws_alb_listener" "vault" {
   load_balancer_arn = aws_alb.vault.arn
   port              = 80
   protocol          = "HTTP"
-  timeouts {
-    create = "30m"
-  }
+  
   default_action {
     type             = "forward"
     target_group_arn = aws_alb_target_group.vault.arn
