@@ -10,33 +10,27 @@ launched by Terraform.
 After a short initial setup a user is able to deploy
 containerized applications to a Nomad cluster.
 
+# Dependencies
+
+* AWS Account (and an access key & secret key you can use)
+* Terraform Cloud account (and org token & user token for the deploy button)
+* Consul & Nomad installed locally (`brew install consul && brew install nomad`)
 ### Usage
 
-- Get credentials for an AWS account.
-- `export AWS_ACCESS_KEY_ID=${YOUR_ACCESS_KEY}`
-- `export AWS_SECRET_ACCESS_KEY=${YOUR_SECRET_KEY}`
-- `terraform apply` (this will take several minutes)
-- Access your Hashistack via EC2.
-- If running in production, ensure that security groups are restricted beyond the default setup.
+* Click the deploy button above and follow the steps
+* Approve the plan and apply the changes
+* Once complete, go to the outputs tab on your workspace. Use the appropriate values in the following command on you local machine
 
-### Dependencies
+```bash
+export NOMAD_ADDR=workspace_output_nomad_server_url_here CONSUL_HTTP_ADDR=workspace_output_consul_server_url_here
+```
 
-- Terraform 12+
-- AWS Account Key and Secret
+```bash
+consul acl bootstrap
+export CONSUL_HTTP_TOKEN=output_of_SecretID_value_goes_here
+```
 
-### Remaining Todos
-
-- Write out How to Use Docs
-  - Variables necessary
-  - Commands for ssh-ing
-  - Commands for accessing
-  - Commands for running nomad
-  - Use TF output if possible
-- Ensure vault and nomad integration works properly
-- Config Audit
-
-### ~~Plagiarized from~~ Inspired By
-
-- https://github.com/hashicorp/nomad/tree/master/terraform
-- https://github.com/nicholasjackson/terraform-aws-hashicorp-suite
-- https://github.com/hashicorp/terraform-guides/tree/master/infrastructure-as-code/hashistack
+```bash
+nomad acl bootstrap
+export NOMAD_TOKEN=output_of_SecretID_value_goes_here
+```
